@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | NovaTrade</title>
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+</head>
+<body class="auth-page">
+
+    <div class="auth-card" style="margin: var(--space-4) 0;">
+        <div class="auth-logo">
+            <i class="ph-fill ph-chart-line-up" style="color: var(--color-primary)"></i> NovaTrade
+        </div>
+        
+        <div style="text-align: center; margin-bottom: var(--space-4);">
+            <h2 style="font-size: var(--text-2xl);">Create an account</h2>
+            <p style="font-size: var(--text-sm); display: flex; align-items: center; justify-content: center; gap: 4px; margin-top: 4px;">
+                <i class="ph-fill ph-lock-key" style="color: var(--color-accent);"></i> Secure connection
+            </p>
+        </div>
+
+        <form id="registerForm" novalidate>
+            <div class="form-group">
+                <label for="name" class="form-label">Full Name</label>
+                <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="email" class="form-label">Email Address</label>
+                <input type="email" id="email" name="email" class="form-control" placeholder="name@example.com" required>
+                <span class="error-msg"></span>
+            </div>
+            
+            <div class="form-group">
+                <label for="password" class="form-label">Password</label>
+                <input type="password" id="password" name="password" class="form-control" placeholder="Min. 8 characters" required>
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="form-group">
+                <label for="confirm_password" class="form-label">Confirm Password</label>
+                <input type="password" id="confirm_password" name="confirm_password" class="form-control" placeholder="Re-enter password" required>
+                <span class="error-msg"></span>
+            </div>
+
+            <div class="form-group" style="margin-bottom: var(--space-4); display: flex; align-items: flex-start; gap: 0.5rem;">
+                <input type="checkbox" id="terms" name="terms" required style="margin-top: 4px;">
+                <label for="terms" style="font-size: var(--text-xs); color: var(--color-text-muted); cursor: pointer;">
+                    I agree to the <a href="#">Terms of Service</a>, <a href="#">Privacy Policy</a>, and consent to electronic disclosures.
+                </label>
+                <!-- Hack to align error message properly for checkbox -->
+                <div style="width: 100%; position: absolute; margin-top: 2rem;">
+                    <span class="error-msg"></span>
+                </div>
+            </div>
+            
+            <button type="submit" class="btn btn-primary" style="width: 100%;">Register</button>
+        </form>
+
+        <div class="auth-divider">
+            <span>or sign up with</span>
+        </div>
+
+        <button class="btn btn-outline social-btn">
+            <i class="ph-fill ph-google-logo"></i> Google
+        </button>
+        
+        <p style="text-align: center; font-size: var(--text-sm); margin-bottom: 0; margin-top: var(--space-4);">
+            Already have an account? <a href="login.html">Login</a>
+        </p>
+    </div>
+
+    <!-- Main JS for validation -->
+    <script src="./assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.validateForm) {
+                window.validateForm('registerForm', [
+                    { name: 'name', required: true, message: 'Full name is required' },
+                    { name: 'email', required: true, type: 'email', message: 'Enter a valid email address' },
+                    { name: 'password', required: true, minLength: 8, message: 'Password must be at least 8 characters' },
+                    { name: 'confirm_password', required: true, match: 'password', message: 'Passwords do not match' },
+                    { name: 'terms', required: true, message: 'You must accept the terms' }
+                ]);
+            }
+        });
+    </script>
+</body>
+</html>

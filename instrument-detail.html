@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AAPL Overview | NovaTrade</title>
+    <meta name="description" content="View indicative pricing, key statistics, and fundamental data for Apple Inc. (AAPL).">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+
+    <style>
+        .breadcrumb {
+            display: flex;
+            align-items: center;
+            gap: 0.4rem;
+            font-size: var(--text-xs);
+            color: var(--color-text-faint);
+            margin-bottom: var(--space-2);
+        }
+        .breadcrumb a { color: var(--color-text-faint); }
+        .breadcrumb a:hover { color: var(--color-primary); }
+
+        .asset-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: var(--space-3);
+        }
+
+        .section-block {
+            border: 1px solid var(--color-border);
+            border-radius: var(--radius-lg);
+            background: var(--color-surface);
+            padding: var(--space-3);
+            margin-top: var(--space-3);
+        }
+        .block-title {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: var(--space-2);
+            margin-bottom: var(--space-3);
+        }
+        .block-title h3 { font-size: var(--text-xl); }
+    </style>
+</head>
+<body>
+    <div class="drawer-overlay"></div>
+
+    <nav class="nav-drawer">
+        <button class="drawer-close" aria-label="Close menu"><i class="ph ph-x"></i></button>
+        <ul class="drawer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="markets.html" class="active">Markets</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="drawer-actions">
+            <button class="theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-sun"></i></button>
+            <a href="login.html" class="btn btn-primary">Login</a>
+        </div>
+    </nav>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="ph-fill ph-chart-line-up"></i> NovaTrade
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="markets.html" class="active">Markets</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-sun"></i></button>
+                <a href="login.html" class="btn btn-primary btn-desktop-login">Login</a>
+                <button class="hamburger" aria-label="Open menu"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ ASSET HEADER ============ -->
+        <section class="asset-header">
+            <div class="container">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> <i class="ph ph-caret-right"></i>
+                    <a href="markets.html">Markets</a> <i class="ph ph-caret-right"></i>
+                    <span>AAPL</span>
+                </div>
+
+                <div class="asset-top">
+                    <div>
+                        <div class="asset-title">
+                            <div class="asset-logo">AA</div>
+                            <div>
+                                <h1 style="font-size:var(--text-4xl);margin:0;line-height:1.1">AAPL</h1>
+                                <p style="margin:0;font-size:var(--text-sm)">Apple Inc. · NASDAQ</p>
+                            </div>
+                            <span class="badge badge-primary">Equity</span>
+                            <span class="badge"><span class="pulse-dot"></span> Market open</span>
+                        </div>
+                    </div>
+
+                    <div style="display:flex;align-items:flex-end;gap:var(--space-3);flex-wrap:wrap">
+                        <button class="watch-btn" id="watchBtn">
+                            <i class="ph ph-star"></i> <span>Watchlist</span>
+                        </button>
+
+                        <div style="text-align:right">
+                            <div class="price-live" id="livePrice">173.50</div>
+                            <div class="num" id="liveChange" style="font-weight:500;display:flex;align-items:center;gap:4px;justify-content:flex-end;margin-top:4px;font-size:var(--text-sm)">
+                                <i class="ph-bold ph-trend-up"></i> +1.20% (+$2.07)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" style="padding-top:var(--space-4)">
+            <div class="detail-grid">
+                <!-- ================= LEFT COLUMN ================= -->
+                <div>
+                    <!-- ---- Interactive chart ---- -->
+                    <div class="chart-shell">
+                        <div class="chart-toolbar">
+                            <div class="range-group" id="rangeGroup" role="tablist">
+                                <button class="range-btn" data-range="1D">1D</button>
+                                <button class="range-btn" data-range="1W">1W</button>
+                                <button class="range-btn active" data-range="1M">1M</button>
+                                <button class="range-btn" data-range="6M">6M</button>
+                                <button class="range-btn" data-range="1Y">1Y</button>
+                                <button class="range-btn" data-range="5Y">5Y</button>
+                            </div>
+
+                            <div style="display:flex;align-items:center;gap:var(--space-2)">
+                                <span class="num" id="rangeReturn" style="font-size:var(--text-sm);font-weight:600">+4.82%</span>
+                                <span class="badge" style="font-size:0.7rem"><span class="pulse-dot"></span> Simulated</span>
+                            </div>
+                        </div>
+
+                        <div class="chart-canvas-wrap">
+                            <canvas id="priceChart" role="img" aria-label="Indicative price chart for AAPL"></canvas>
+                            <div class="chart-tooltip" id="chartTooltip">
+                                <div class="tt-price">$0.00</div>
+                                <div class="tt-date">—</div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ---- 52-week range ---- -->
+                    <div class="section-block">
+                        <div class="block-title">
+                            <h3>52-week range</h3>
+                            <span class="badge" id="rangePosBadge">—</span>
+                        </div>
+                        <div class="range-meter">
+                            <div class="range-track">
+                                <div class="range-thumb" id="rangeThumb" style="left:50%"></div>
+                            </div>
+                            <div class="range-labels">
+                                <span>$124.17 <span style="color:var(--color-text-faint)">low</span></span>
+                                <span><span style="color:var(--color-text-faint)">high</span> $198.23</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ---- Tabs: Overview / Financials / News / Book ---- -->
+                    <div class="section-block" data-tabs>
+                        <div class="tab-bar" role="tablist" style="margin-bottom:var(--space-3)">
+                            <button class="tab-btn active" data-tab="overview" role="tab" aria-selected="true">
+                                <i class="ph ph-squares-four"></i> Key stats
+                            </button>
+                            <button class="tab-btn" data-tab="financials" role="tab" aria-selected="false">
+                                <i class="ph ph-chart-bar"></i> Financials
+                            </button>
+                            <button class="tab-btn" data-tab="book" role="tab" aria-selected="false">
+                                <i class="ph ph-list-numbers"></i> Order book
+                            </button>
+                            <button class="tab-btn" data-tab="news" role="tab" aria-selected="false">
+                                <i class="ph ph-newspaper"></i> News
+                            </button>
+                        </div>
+
+                        <!-- Key stats -->
+                        <div class="tab-panel active" data-panel="overview">
+                            <div class="stats-grid">
+                                <div class="stat-item"><div class="stat-label">Market cap</div><div class="stat-value">2.80T</div></div>
+                                <div class="stat-item"><div class="stat-label">P/E ratio</div><div class="stat-value">29.45</div></div>
+                                <div class="stat-item"><div class="stat-label">Div yield</div><div class="stat-value">0.55%</div></div>
+                                <div class="stat-item"><div class="stat-label">52W high</div><div class="stat-value">$198.23</div></div>
+                                <div class="stat-item"><div class="stat-label">52W low</div><div class="stat-value">$124.17</div></div>
+                                <div class="stat-item"><div class="stat-label">Volume</div><div class="stat-value" id="statVolume">54.2M</div></div>
+                                <div class="stat-item"><div class="stat-label">Avg volume</div><div class="stat-value">58.9M</div></div>
+                                <div class="stat-item"><div class="stat-label">Beta</div><div class="stat-value">1.28</div></div>
+                                <div class="stat-item"><div class="stat-label">EPS (TTM)</div><div class="stat-value">5.89</div></div>
+                                <div class="stat-item"><div class="stat-label">Day range</div><div class="stat-value" id="statDayRange">171.10 – 174.82</div></div>
+                            </div>
+                            <p style="font-size:var(--text-xs);margin-top:var(--space-2)">
+                                * All data on this page is simulated for demonstration and is not real market data.
+                            </p>
+                        </div>
+
+                        <!-- Financials -->
+                        <div class="tab-panel" data-panel="financials" hidden>
+                            <p style="font-size:var(--text-sm);margin-bottom:var(--space-3)">
+                                Revenue mix by segment, trailing twelve months (illustrative).
+                            </p>
+                            <div id="finBars">
+                                <div class="fin-row" data-pct="52">
+                                    <div class="fin-head"><span>iPhone</span><span class="v">$205.4B</span></div>
+                                    <div class="fin-track"><div class="fin-fill"></div></div>
+                                </div>
+                                <div class="fin-row" data-pct="26">
+                                    <div class="fin-head"><span>Services</span><span class="v">$85.2B</span></div>
+                                    <div class="fin-track"><div class="fin-fill"></div></div>
+                                </div>
+                                <div class="fin-row" data-pct="10">
+                                    <div class="fin-head"><span>Wearables</span><span class="v">$39.8B</span></div>
+                                    <div class="fin-track"><div class="fin-fill"></div></div>
+                                </div>
+                                <div class="fin-row" data-pct="7">
+                                    <div class="fin-head"><span>Mac</span><span class="v">$29.1B</span></div>
+                                    <div class="fin-track"><div class="fin-fill"></div></div>
+                                </div>
+                                <div class="fin-row" data-pct="5">
+                                    <div class="fin-head"><span>iPad</span><span class="v">$28.3B</span></div>
+                                    <div class="fin-track"><div class="fin-fill"></div></div>
+                                </div>
+                            </div>
+
+                            <div class="stats-grid" style="margin-top:var(--space-3)">
+                                <div class="stat-item"><div class="stat-label">Gross margin</div><div class="stat-value">44.1%</div></div>
+                                <div class="stat-item"><div class="stat-label">Operating margin</div><div class="stat-value">29.8%</div></div>
+                                <div class="stat-item"><div class="stat-label">Free cash flow</div><div class="stat-value">$99.6B</div></div>
+                                <div class="stat-item"><div class="stat-label">Debt / equity</div><div class="stat-value">1.79</div></div>
+                            </div>
+                        </div>
+
+                        <!-- Order book -->
+                        <div class="tab-panel" data-panel="book" hidden>
+                            <p style="font-size:var(--text-sm);margin-bottom:var(--space-2)">
+                                Simulated level-2 depth, refreshing every few seconds.
+                            </p>
+                            <div class="book">
+                                <div class="book-col">
+                                    <h5><i class="ph-bold ph-arrow-down"></i> Bids</h5>
+                                    <div id="bidRows"></div>
+                                </div>
+                                <div class="book-col">
+                                    <h5><i class="ph-bold ph-arrow-up"></i> Asks</h5>
+                                    <div id="askRows"></div>
+                                </div>
+                            </div>
+                            <div style="display:flex;justify-content:space-between;margin-top:var(--space-2);font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-text-muted)">
+                                <span>Spread: <span id="bookSpread">0.04</span></span>
+                                <span>Depth imbalance: <span id="bookImbalance">—</span></span>
+                            </div>
+                        </div>
+
+                        <!-- News -->
+                        <div class="tab-panel" data-panel="news" hidden>
+                            <div class="news-item">
+                                <span class="news-time">09:41</span>
+                                <div>
+                                    <div class="news-title">Supplier checks point to steady build rates into the December quarter</div>
+                                    <div class="news-src">Nova Research · Placeholder headline</div>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <span class="news-time">08:15</span>
+                                <div>
+                                    <div class="news-title">Services segment crosses an annualised $85B run rate</div>
+                                    <div class="news-src">Nova Research · Placeholder headline</div>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <span class="news-time">Yesterday</span>
+                                <div>
+                                    <div class="news-title">Two analysts lift targets following the hardware refresh cycle</div>
+                                    <div class="news-src">Nova Research · Placeholder headline</div>
+                                </div>
+                            </div>
+                            <div class="news-item">
+                                <span class="news-time">2d ago</span>
+                                <div>
+                                    <div class="news-title">Buyback authorisation extended by a further $90B</div>
+                                    <div class="news-src">Nova Research · Placeholder headline</div>
+                                </div>
+                            </div>
+                            <p style="font-size:var(--text-xs);margin-top:var(--space-2)">
+                                * Fictional headlines shown for layout demonstration. Not news, research, or advice.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- ================= RIGHT COLUMN ================= -->
+                <div>
+                    <div class="trade-panel">
+                        <div class="block-title" style="border-bottom:1px solid var(--color-border);padding-bottom:var(--space-2)">
+                            <h3>Trade AAPL</h3>
+                            <span class="badge" style="font-size:0.7rem">Paper</span>
+                        </div>
+
+                        <div class="side-switch" id="sideSwitch">
+                            <button class="side-btn active" data-side="buy">Buy</button>
+                            <button class="side-btn" data-side="sell">Sell</button>
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="orderType">Order type</label>
+                            <select class="form-control" id="orderType">
+                                <option value="market">Market</option>
+                                <option value="limit">Limit</option>
+                                <option value="stop">Stop loss</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group" id="limitGroup" hidden>
+                            <label class="form-label" for="limitPrice">Limit price</label>
+                            <input type="number" class="form-control" id="limitPrice" step="0.01" value="173.50">
+                        </div>
+
+                        <div class="form-group">
+                            <label class="form-label" for="qty">Shares</label>
+                            <div class="qty-row">
+                                <button class="qty-btn" id="qtyMinus" aria-label="Decrease quantity">−</button>
+                                <input type="number" class="form-control" id="qty" value="10" min="1" step="1" style="text-align:center;font-family:var(--font-mono)">
+                                <button class="qty-btn" id="qtyPlus" aria-label="Increase quantity">+</button>
+                            </div>
+                            <div class="qty-presets" id="qtyPresets">
+                                <button class="qty-preset" data-qty="1">1</button>
+                                <button class="qty-preset" data-qty="10">10</button>
+                                <button class="qty-preset" data-qty="25">25</button>
+                                <button class="qty-preset" data-qty="50">50</button>
+                                <button class="qty-preset" data-qty="100">100</button>
+                            </div>
+                        </div>
+
+                        <div class="order-summary">
+                            <div class="summary-row">
+                                <span>Reference price</span>
+                                <span class="v" id="sumPrice">$173.50</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Gross value</span>
+                                <span class="v" id="sumGross">$1,735.00</span>
+                            </div>
+                            <div class="summary-row">
+                                <span>Brokerage (flat)</span>
+                                <span class="v" id="sumFee">$0.99</span>
+                            </div>
+                            <div class="summary-row total">
+                                <span id="sumTotalLabel">Estimated cost</span>
+                                <span class="v" id="sumTotal">$1,735.99</span>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary" id="placeOrder" style="width:100%;margin-top:var(--space-3)">
+                            <i class="ph-bold ph-lock-key"></i> <span id="placeLabel">Login to buy</span>
+                        </button>
+
+                        <p style="font-size:var(--text-xs);margin:var(--space-2) 0 0;text-align:center">
+                            Simulated ticket. No order is transmitted to any venue.
+                        </p>
+                    </div>
+
+                    <!-- Company info -->
+                    <div class="section-block">
+                        <div class="block-title"><h3>About Apple Inc.</h3></div>
+                        <p style="font-size:var(--text-sm)">
+                            Apple Inc. designs, manufactures, and markets smartphones, personal computers, tablets,
+                            wearables, and accessories worldwide, alongside a growing portfolio of subscription services.
+                        </p>
+                        <div class="stats-grid" style="margin-top:var(--space-2)">
+                            <div class="stat-item"><div class="stat-label">Sector</div><div class="stat-value" style="font-size:var(--text-sm)">Technology</div></div>
+                            <div class="stat-item"><div class="stat-label">Employees</div><div class="stat-value" style="font-size:var(--text-sm)">161,000</div></div>
+                            <div class="stat-item"><div class="stat-label">CEO</div><div class="stat-value" style="font-size:var(--text-sm)">T. Cook</div></div>
+                            <div class="stat-item"><div class="stat-label">Founded</div><div class="stat-value" style="font-size:var(--text-sm)">1976</div></div>
+                        </div>
+                    </div>
+
+                    <!-- Related instruments -->
+                    <div class="section-block">
+                        <div class="block-title"><h3>Related</h3></div>
+                        <div style="display:flex;flex-direction:column;gap:0.5rem" id="relatedList"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <div class="toast-stack" id="toastStack" aria-live="polite"></div>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="nav-brand" style="margin-bottom:var(--space-2)">
+                        <i class="ph-fill ph-chart-line-up"></i> NovaTrade
+                    </a>
+                    <p>The premium stock brokerage built for modern investors.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="markets.html">Markets</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="register.html">Open Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclosures</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaTrade. All rights reserved.</p>
+                <p class="footer-disclosure">
+                    <strong>Disclaimer:</strong> NovaTrade is a placeholder brokerage brand created for demonstration purposes. Not a real financial institution. Trading involves significant risk, and you can lose all of your investment. Past performance does not guarantee future results. All figures, returns, and prices shown are estimates/placeholders and do not constitute investment advice.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/detail.js"></script>
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 Not Found | NovaTrade</title>
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+    
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: var(--space-4);
+        }
+        .error-code {
+            font-size: clamp(6rem, 18vw, 10rem);
+            font-family: var(--font-heading);
+            font-weight: 700;
+            background: var(--gradient-text);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            letter-spacing: -0.05em;
+            line-height: 1;
+            margin-bottom: var(--space-4);
+            
+        }
+    </style>
+</head>
+<body>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="ph-fill ph-chart-line-up" style="color: var(--color-primary)"></i> NovaTrade
+            </a>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-sun"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main class="error-page container">
+        <div>
+            <div class="error-code">404</div>
+            <h1 style="margin-bottom: var(--space-2);">Page not found</h1>
+            <p style="font-size: var(--text-lg); margin-bottom: var(--space-6); max-width: 500px; margin-inline: auto;">
+                The market data or page you are looking for has been moved or no longer exists.
+            </p>
+            <a href="index.html" class="btn btn-primary">
+                <i class="ph ph-arrow-left"></i> Return Home
+            </a>
+        </div>
+    </main>
+
+    <script src="./assets/js/main.js"></script>
+</body>
+</html>

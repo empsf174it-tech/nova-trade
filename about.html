@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Us | NovaTrade</title>
+    <meta name="description" content="Learn about NovaTrade's mission, our leadership team, and our commitment to providing a secure, institutional-grade brokerage experience.">
+
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+
+    <style>
+        .about-hero {
+            position: relative;
+            padding: calc(72px + var(--space-8)) 0 var(--space-8);
+            text-align: center;
+            border-bottom: 1px solid var(--color-border);
+            overflow: hidden;
+        }
+
+        .values-shell {
+            display: grid;
+            grid-template-columns: 0.85fr 1.15fr;
+            gap: var(--space-4);
+            align-items: start;
+            padding: var(--space-4);
+            border-radius: var(--radius-xl);
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            box-shadow: var(--shadow);
+        }
+
+        .value-panel {
+            min-height: 260px;
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-alt);
+            border: 1px solid var(--color-border);
+        }
+        .value-panel h3 { margin-bottom: var(--space-2); }
+        .value-panel .value-icon {
+            width: 56px; height: 56px;
+            border-radius: 16px;
+            display: grid;
+            place-items: center;
+            font-size: 1.6rem;
+            color: #fff;
+            background: var(--gradient-brand);
+            box-shadow: var(--glow-primary);
+            margin-bottom: var(--space-3);
+        }
+
+        .mission-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: var(--space-6);
+            align-items: center;
+        }
+
+        .desk-map {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: var(--space-2);
+        }
+        .desk-tile {
+            padding: var(--space-2);
+            border-radius: var(--radius);
+            border: 1px solid var(--color-border);
+            background: var(--color-surface);
+            text-align: center;
+            transition: var(--transition);
+            cursor: default;
+        }
+        .desk-tile:hover { transform: translateY(-4px); border-color: var(--color-primary); box-shadow: var(--shadow); }
+        .desk-tile i { font-size: 1.4rem; color: var(--color-primary); }
+        .desk-tile .city { font-family: var(--font-heading); font-weight: 600; margin-top: 0.35rem; }
+        .desk-tile .head { font-size: var(--text-xs); color: var(--color-text-faint); }
+
+        @media (max-width: 900px) {
+            .values-shell { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+    <div class="drawer-overlay"></div>
+
+    <nav class="nav-drawer">
+        <button class="drawer-close" aria-label="Close menu"><i class="ph ph-x"></i></button>
+        <ul class="drawer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html" class="active">About</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+        <div class="drawer-actions">
+            <button class="theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-sun"></i></button>
+            <a href="login.html" class="btn btn-primary">Login</a>
+        </div>
+    </nav>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="ph-fill ph-chart-line-up"></i> NovaTrade
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="markets.html">Markets</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html" class="active">About</a></li>
+                <li><a href="contact.html">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-sun"></i></button>
+                <a href="login.html" class="btn btn-primary btn-desktop-login">Login</a>
+                <button class="hamburger" aria-label="Open menu"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- ============ HERO ============ -->
+        <section class="about-hero">
+            <div class="hero-aurora" aria-hidden="true"><span></span><span></span><span></span></div>
+            <div class="hero-grid-bg" aria-hidden="true"></div>
+
+            <div class="container" style="position:relative;z-index:1">
+                <div class="section-header" style="margin-bottom:var(--space-4)">
+                    <div class="eyebrow" style="justify-content:center">Our story</div>
+                    <h1 class="animate-fade-up">Redefining the <span class="gradient-text">modern brokerage</span>.</h1>
+                    <p class="animate-fade-up delay-200" style="font-size:var(--text-lg)">
+                        Powerful tools shouldn't be restricted to Wall Street. NovaTrade exists to close the gap
+                        between institutional latency and retail accessibility.
+                    </p>
+                </div>
+
+                <div class="stat-strip animate-fade-up delay-300" style="max-width:900px;margin:0 auto">
+                    <div class="stat-tile">
+                        <div class="k num"><span class="counter" data-target="2022" data-decimals="0"></span></div>
+                        <div class="l">Founded</div>
+                    </div>
+                    <div class="stat-tile">
+                        <div class="k num"><span class="counter" data-target="184" data-decimals="0"></span></div>
+                        <div class="l">Team members</div>
+                    </div>
+                    <div class="stat-tile">
+                        <div class="k num"><span class="counter" data-target="6" data-decimals="0"></span></div>
+                        <div class="l">Global desks</div>
+                    </div>
+                    <div class="stat-tile">
+                        <div class="k num"><span class="counter" data-target="99.98" data-decimals="2"></span>%</div>
+                        <div class="l">Uptime since launch</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ MISSION ============ -->
+        <section class="container">
+            <div class="mission-grid">
+                <div class="reveal">
+                    <div class="eyebrow">Mission</div>
+                    <h2>Execution quality, above everything else.</h2>
+                    <p>We give investors a stable, secure, and transparent trading environment powered by next-generation infrastructure.</p>
+                    <p>Since inception we have prioritised execution quality above all else. Every line of code in our backend is optimised to shave milliseconds off order routing, so you get the fill you deserve.</p>
+
+                    <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:var(--space-3)">
+                        <span class="badge badge-primary"><i class="ph-bold ph-lightning"></i> Sub-20ms routing</span>
+                        <span class="badge badge-primary"><i class="ph-bold ph-eye"></i> Published routing stats</span>
+                        <span class="badge badge-primary"><i class="ph-bold ph-hand-coins"></i> No PFOF</span>
+                    </div>
+                </div>
+                <div class="reveal" data-reveal-delay="100">
+                    <img src="https://images.unsplash.com/photo-1573164713988-8665fc963095?auto=format&fit=crop&q=80&w=800"
+                         alt="Team meeting"
+                         style="border-radius:var(--radius-lg);border:1px solid var(--color-border);box-shadow:var(--shadow-lg)">
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ VALUES (INTERACTIVE SWITCHER) ============ -->
+        <section style="background:var(--color-bg-alt);border-block:1px solid var(--color-border)">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="eyebrow">What we stand for</div>
+                    <h2>Four principles, held stubbornly.</h2>
+                    <p>Select a principle to see how it shows up in the product.</p>
+                </div>
+
+                <div class="values-shell reveal" data-tabs>
+                    <div class="value-list" role="tablist">
+                        <button class="value-btn active" data-tab="v1" role="tab" aria-selected="true">
+                            <i class="ph-fill ph-eye"></i> Radical transparency
+                        </button>
+                        <button class="value-btn" data-tab="v2" role="tab" aria-selected="false">
+                            <i class="ph-fill ph-lock-key"></i> Security as default
+                        </button>
+                        <button class="value-btn" data-tab="v3" role="tab" aria-selected="false">
+                            <i class="ph-fill ph-gauge"></i> Obsessive performance
+                        </button>
+                        <button class="value-btn" data-tab="v4" role="tab" aria-selected="false">
+                            <i class="ph-fill ph-users-three"></i> Client alignment
+                        </button>
+                    </div>
+
+                    <div>
+                        <div class="value-panel tab-panel active" data-panel="v1">
+                            <div class="value-icon"><i class="ph-fill ph-eye"></i></div>
+                            <h3>Radical transparency</h3>
+                            <p>Every charge on a NovaTrade contract note is itemised — brokerage, exchange fees, and statutory levies are never bundled into a spread.</p>
+                            <p>We publish monthly execution-quality statistics, including price improvement and venue distribution, so clients can verify our claims rather than trust them.</p>
+                        </div>
+
+                        <div class="value-panel tab-panel" data-panel="v2" hidden>
+                            <div class="value-icon"><i class="ph-fill ph-lock-key"></i></div>
+                            <h3>Security as default</h3>
+                            <p>Hardware-key 2FA is available on every tier, not reserved for premium accounts. Client securities sit in segregated custody, entirely separate from company funds.</p>
+                            <p>Internal access to production systems is time-boxed, peer-approved, and fully audit-logged.</p>
+                        </div>
+
+                        <div class="value-panel tab-panel" data-panel="v3" hidden>
+                            <div class="value-icon"><i class="ph-fill ph-gauge"></i></div>
+                            <h3>Obsessive performance</h3>
+                            <p>Our matching gateway is colocated with primary venues, and the order path is measured end to end on every single fill.</p>
+                            <p>A latency regression is treated with the same severity as an outage — if the median fill slips past 25ms, we roll back.</p>
+                        </div>
+
+                        <div class="value-panel tab-panel" data-panel="v4" hidden>
+                            <div class="value-icon"><i class="ph-fill ph-users-three"></i></div>
+                            <h3>Client alignment</h3>
+                            <p>We do not sell order flow. Our revenue comes from a flat, visible fee, which means our incentive is your execution quality, not your turnover.</p>
+                            <p>No inactivity fees, no withdrawal fees, and no penalty for closing an account.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TIMELINE (SCROLL-ACTIVATED + EXPANDABLE) ============ -->
+        <section class="container">
+            <div class="section-header reveal">
+                <div class="eyebrow">Track record</div>
+                <h2>Regulatory &amp; compliance milestones</h2>
+                <p>Trust is our foundational asset. Click any milestone to read the detail.</p>
+            </div>
+
+            <div class="timeline" id="timeline">
+                <div class="timeline-progress" id="timelineProgress"></div>
+
+                <div class="timeline-item reveal">
+                    <span class="dot"></span>
+                    <div class="timeline-card open">
+                        <div class="timeline-year">2022 · Q1</div>
+                        <h4>Founded &amp; seed funded</h4>
+                        <div class="timeline-detail">
+                            <p>NovaTrade is established by a team of former HFT engineers and compliance officers, with $18M in seed funding earmarked for building the matching gateway in-house.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal" data-reveal-delay="80">
+                    <span class="dot"></span>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2023 · Q3</div>
+                        <h4>FINRA membership &amp; SEC registration
+                            <span class="badge badge-success" style="margin-left:0.4rem"><i class="ph-fill ph-check-circle"></i> Completed</span>
+                        </h4>
+                        <div class="timeline-detail">
+                            <p>Full broker-dealer registration achieved, enabling direct market access operations and self-clearing for equities.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal" data-reveal-delay="160">
+                    <span class="dot"></span>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2024 · Q2</div>
+                        <h4>SIPC insurance implementation</h4>
+                        <div class="timeline-detail">
+                            <p>Client accounts insured up to $500,000, including a $250,000 cash sub-limit, adding an essential layer of protection on top of segregated custody.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal" data-reveal-delay="240">
+                    <span class="dot"></span>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2025 · Q1</div>
+                        <h4>ISO 27001 certification</h4>
+                        <div class="timeline-detail">
+                            <p>Third-party auditing confirmed our information security management system meets global standards, covering 114 controls across 14 domains.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="timeline-item reveal" data-reveal-delay="320">
+                    <span class="dot"></span>
+                    <div class="timeline-card">
+                        <div class="timeline-year">2026 · Q1</div>
+                        <h4>Execution Engine v2.0
+                            <span class="badge badge-primary" style="margin-left:0.4rem"><span class="pulse-dot"></span> Live</span>
+                        </h4>
+                        <div class="timeline-detail">
+                            <p>A rewritten routing layer cut median fill time from 41ms to 18ms and introduced bracket and basket orders across all supported venues.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ TEAM ============ -->
+        <section style="background:var(--color-bg-alt);border-block:1px solid var(--color-border)">
+            <div class="container">
+                <div class="section-header reveal">
+                    <div class="eyebrow">Leadership</div>
+                    <h2>The people behind the engine.</h2>
+                    <p>Hover a card to read more. All names below are fictional placeholders.</p>
+                </div>
+
+                <div class="team-grid reveal">
+                    <div class="team-card">
+                        <div class="team-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&crop=faces&q=80&w=220&h=220" alt="Portrait of A. Varma" width="88" height="88" loading="lazy"></div>
+                        <h4>A. Varma</h4>
+                        <div class="team-role">Chief Executive</div>
+                        <p class="team-bio">Fifteen years across market structure and clearing. Previously led electronic execution at a tier-one bank.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar"><img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?auto=format&fit=crop&crop=faces&q=80&w=220&h=220" alt="Portrait of L. Chen" width="88" height="88" loading="lazy"></div>
+                        <h4>L. Chen</h4>
+                        <div class="team-role">Chief Technology</div>
+                        <p class="team-bio">Built low-latency matching systems for two exchanges. Owns the sub-20ms routing mandate.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar"><img src="https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?auto=format&fit=crop&crop=faces&q=80&w=220&h=220" alt="Portrait of M. Okonjo" width="88" height="88" loading="lazy"></div>
+                        <h4>M. Okonjo</h4>
+                        <div class="team-role">Chief Compliance</div>
+                        <p class="team-bio">Former regulator. Leads our surveillance, reporting, and client-asset protection programme.</p>
+                    </div>
+                    <div class="team-card">
+                        <div class="team-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?auto=format&fit=crop&crop=faces&q=80&w=220&h=220" alt="Portrait of S. Rossi" width="88" height="88" loading="lazy"></div>
+                        <h4>S. Rossi</h4>
+                        <div class="team-role">Head of Risk</div>
+                        <p class="team-bio">Designs the pre-trade margin engine and the intraday exposure limits that sit behind every order.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ============ DESKS ============ -->
+        <section class="container">
+            <div class="section-header reveal">
+                <div class="eyebrow">Presence</div>
+                <h2>Six desks, one order book.</h2>
+            </div>
+
+            <div class="desk-map reveal">
+                <div class="desk-tile"><i class="ph ph-buildings"></i><div class="city">Mumbai</div><div class="head">Headquarters</div></div>
+                <div class="desk-tile"><i class="ph ph-buildings"></i><div class="city">Singapore</div><div class="head">APAC execution</div></div>
+                <div class="desk-tile"><i class="ph ph-buildings"></i><div class="city">London</div><div class="head">EMEA clearing</div></div>
+                <div class="desk-tile"><i class="ph ph-buildings"></i><div class="city">New York</div><div class="head">US equities</div></div>
+                <div class="desk-tile"><i class="ph ph-buildings"></i><div class="city">Bengaluru</div><div class="head">Engineering</div></div>
+                <div class="desk-tile"><i class="ph ph-buildings"></i><div class="city">Dubai</div><div class="head">Client coverage</div></div>
+            </div>
+        </section>
+
+        <!-- ============ CTA ============ -->
+        <section class="container">
+            <div class="cta-banner reveal">
+                <div class="eyebrow" style="justify-content:center">Join us</div>
+                <h2 style="margin-bottom:var(--space-2)">Trade with a broker that shows its work.</h2>
+                <p style="margin-bottom:var(--space-4);max-width:520px;margin-inline:auto">
+                    Open an account in minutes, or talk to our coverage team about migrating an existing book.
+                </p>
+                <div style="display:flex;gap:var(--space-2);justify-content:center;flex-wrap:wrap">
+                    <a href="register.html" class="btn btn-primary btn-lg" data-magnetic>
+                        Open an account <i class="ph-bold ph-arrow-right"></i>
+                    </a>
+                    <a href="contact.html" class="btn btn-outline btn-lg">Talk to us</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="nav-brand" style="margin-bottom:var(--space-2)">
+                        <i class="ph-fill ph-chart-line-up"></i> NovaTrade
+                    </a>
+                    <p>The premium stock brokerage built for modern investors.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="markets.html">Markets</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="register.html">Open Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclosures</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaTrade. All rights reserved.</p>
+                <p class="footer-disclosure">
+                    <strong>Disclaimer:</strong> NovaTrade is a placeholder brokerage brand created for demonstration purposes. Not a real financial institution. Trading involves significant risk, and you can lose all of your investment. Past performance does not guarantee future results. All figures, returns, and prices shown are estimates/placeholders and do not constitute investment advice.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+    <script src="./assets/js/about.js"></script>
+</body>
+</html>

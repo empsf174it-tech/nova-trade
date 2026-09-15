@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Us | NovaTrade</title>
+    <meta name="description" content="Get in touch with NovaTrade's support team or visit our branch locations.">
+    
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+    <link rel="icon" type="image/svg+xml" href="./assets/images/favicon.svg">
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <link rel="stylesheet" href="./assets/css/components.css">
+</head>
+<body>
+    <div class="drawer-overlay"></div>
+
+    <nav class="nav-drawer">
+        <button class="drawer-close" aria-label="Close menu"><i class="ph ph-x"></i></button>
+        <ul class="drawer-links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="markets.html">Markets</a></li>
+            <li><a href="pricing.html">Pricing</a></li>
+            <li><a href="about.html">About</a></li>
+            <li><a href="contact.html" class="active">Contact</a></li>
+        </ul>
+        <div class="drawer-actions">
+            <button class="theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-sun"></i></button>
+            <a href="login.html" class="btn btn-primary">Login</a>
+        </div>
+    </nav>
+
+    <header class="navbar">
+        <div class="container">
+            <a href="index.html" class="nav-brand">
+                <i class="ph-fill ph-chart-line-up" style="color: var(--color-primary)"></i> NovaTrade
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="markets.html">Markets</a></li>
+                <li><a href="pricing.html">Pricing</a></li>
+                <li><a href="about.html">About</a></li>
+                <li><a href="contact.html" class="active">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="theme-toggle" aria-label="Toggle Dark Mode"><i class="ph ph-sun"></i></button>
+                <a href="login.html" class="btn btn-primary btn-desktop-login">Login</a>
+                <button class="hamburger" aria-label="Open menu"><i class="ph ph-list"></i></button>
+            </div>
+        </div>
+    </header>
+
+    <style>
+        @media (max-width: 1024px) { .btn-desktop-login { display: none !important; } }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: var(--space-8);
+            margin-top: calc(72px + var(--space-8));
+            padding-bottom: var(--space-8);
+            /* Prevent overflow on small screens */
+            width: 100%;
+            overflow-x: hidden;
+        }
+        
+        .contact-info {
+            background-color: var(--color-surface);
+            padding: var(--space-4);
+            border-radius: var(--radius-lg);
+            border: 1px solid var(--color-border);
+            box-shadow: var(--shadow-lg);
+            height: 100%;
+        }
+
+        .contact-method {
+            display: flex;
+            align-items: flex-start;
+            gap: var(--space-3);
+            margin-bottom: var(--space-4);
+        }
+        .contact-method i {
+            flex-shrink: 0;
+            width: 44px;
+            height: 44px;
+            display: grid;
+            place-items: center;
+            border-radius: 12px;
+            font-size: 1.25rem;
+            color: var(--color-primary);
+            background: var(--color-primary-soft);
+            border: 1px solid var(--color-border);
+        }
+
+        .map-container {
+            width: 100%;
+            height: 250px;
+            background: var(--color-surface-2);
+            border-radius: var(--radius-lg);
+            margin-top: var(--space-4);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--color-text-muted);
+            border: 1px dashed var(--color-border-strong);
+        }
+
+        @media (max-width: 768px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* 360px Fixes */
+        @media (max-width: 360px) {
+            .contact-grid { gap: var(--space-4); }
+            .contact-info { padding: var(--space-4); }
+            .map-container { height: 200px; }
+            .form-control { font-size: 16px; /* prevent iOS zoom */ }
+        }
+    </style>
+
+    <main class="container">
+        <div class="contact-grid">
+            
+            <!-- Contact Form -->
+            <div>
+                <h1 style="margin-bottom: var(--space-2);">Get in touch</h1>
+                <p style="margin-bottom: var(--space-6);">Our support team is available 24/5 to assist with your account, technical issues, or trade inquiries.</p>
+                
+                <!-- Formspree placeholder action -->
+                <form id="contactForm" action="https://formspree.io/f/placeholder" method="POST" novalidate>
+                    <div class="form-group">
+                        <label for="name" class="form-label">Full Name</label>
+                        <input type="text" id="name" name="name" class="form-control" placeholder="John Doe" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email" class="form-label">Email Address</label>
+                        <input type="email" id="email" name="email" class="form-control" placeholder="john@example.com" required>
+                        <span class="error-msg"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="subject" class="form-label">Subject</label>
+                        <select id="subject" name="subject" class="form-control" required>
+                            <option value="">Select a topic...</option>
+                            <option value="account">Account Support</option>
+                            <option value="technical">Technical Issue</option>
+                            <option value="billing">Billing & Funding</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <span class="error-msg"></span>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message" class="form-label">Message</label>
+                        <textarea id="message" name="message" class="form-control" rows="5" placeholder="How can we help?" required></textarea>
+                        <span class="error-msg"></span>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary" style="width: 100%;">Send Message</button>
+                </form>
+            </div>
+
+            <!-- Contact Information & Map -->
+            <div class="contact-info">
+                <h2 style="margin-bottom: var(--space-6);">Offices</h2>
+                
+                <div class="contact-method">
+                    <i class="ph ph-map-pin"></i>
+                    <div>
+                        <h4>Global Headquarters</h4>
+                        <p>100 Wall Street, Floor 24<br>New York, NY 10005<br>United States</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="ph ph-phone"></i>
+                    <div>
+                        <h4>Phone Support</h4>
+                        <p>+1 (800) 555-0199<br>Mon-Fri, 24 Hours</p>
+                    </div>
+                </div>
+                
+                <div class="contact-method">
+                    <i class="ph ph-envelope-simple"></i>
+                    <div>
+                        <h4>Email Support</h4>
+                        <p>support@novatrade-placeholder.com</p>
+                    </div>
+                </div>
+
+                <!-- Google Maps Iframe Placeholder -->
+                <div class="map-container">
+                    <div style="text-align: center;">
+                        <i class="ph ph-map-trifold" style="font-size: 2rem; margin-bottom: 0.5rem; display: block;"></i>
+                        [ Google Maps Embed Placeholder ]
+                    </div>
+                </div>
+            </div>
+            
+        </div>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col">
+                    <a href="index.html" class="nav-brand" style="margin-bottom: var(--space-2);">
+                        <i class="ph-fill ph-chart-line-up" style="color: var(--color-primary)"></i> NovaTrade
+                    </a>
+                    <p>The premium stock brokerage built for modern investors.</p>
+                </div>
+                <div class="footer-col">
+                    <h4>Platform</h4>
+                    <ul class="footer-links">
+                        <li><a href="markets.html">Markets</a></li>
+                        <li><a href="pricing.html">Pricing</a></li>
+                        <li><a href="register.html">Open Account</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Company</h4>
+                    <ul class="footer-links">
+                        <li><a href="about.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Careers</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Legal</h4>
+                    <ul class="footer-links">
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Disclosures</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="footer-bottom">
+                <p>&copy; 2026 NovaTrade. All rights reserved.</p>
+                <p class="footer-disclosure">
+                    <strong>Disclaimer:</strong> NovaTrade is a placeholder brokerage brand created for demonstration purposes. Not a real financial institution. Trading involves significant risk, and you can lose all of your investment. Past performance does not guarantee future results. All figures, returns, and prices shown are estimates/placeholders and do not constitute investment advice.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="./assets/js/main.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if(window.validateForm) {
+                window.validateForm('contactForm', [
+                    { name: 'name', required: true, message: 'Please enter your full name' },
+                    { name: 'email', required: true, type: 'email', message: 'Please enter a valid email' },
+                    { name: 'subject', required: true, message: 'Please select a subject' },
+                    { name: 'message', required: true, message: 'Message is required' }
+                ]);
+            }
+        });
+    </script>
+</body>
+</html>
