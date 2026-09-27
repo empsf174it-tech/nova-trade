@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="dark">
+
 <head>
     <meta charset="UTF-8">
-    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
+    <script>try { var t = localStorage.getItem("theme"); if (t) document.documentElement.setAttribute("data-theme", t); } catch (e) { }</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaTrade | Modern Stock Brokerage &amp; Trading Platform</title>
-    <meta name="description" content="Trade equities, derivatives, and mutual funds with NovaTrade. The premium, secure, and intuitive brokerage platform for modern investors.">
+    <meta name="description"
+        content="Trade equities, derivatives, and mutual funds with NovaTrade. The premium, secure, and intuitive brokerage platform for modern investors.">
 
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
@@ -51,6 +53,7 @@
             outline: none;
             margin: var(--space-2) 0 0.35rem;
         }
+
         .slider::-webkit-slider-thumb {
             -webkit-appearance: none;
             appearance: none;
@@ -63,7 +66,12 @@
             cursor: grab;
             transition: transform 0.15s;
         }
-        .slider::-webkit-slider-thumb:active { transform: scale(1.15); cursor: grabbing; }
+
+        .slider::-webkit-slider-thumb:active {
+            transform: scale(1.15);
+            cursor: grabbing;
+        }
+
         .slider::-moz-range-thumb {
             width: 20px;
             height: 20px;
@@ -80,6 +88,7 @@
             background: var(--color-bg-alt);
             border: 1px solid var(--color-border);
         }
+
         .calc-readout .big {
             font-family: var(--font-heading);
             font-size: clamp(2.25rem, 5vw, 3rem);
@@ -96,7 +105,10 @@
             padding: 0.55rem 0;
             border-bottom: 1px dashed var(--color-border);
         }
-        .compare-row:last-child { border-bottom: none; }
+
+        .compare-row:last-child {
+            border-bottom: none;
+        }
 
         /* ---- Platform tab showcase ---- */
         .showcase {
@@ -109,6 +121,7 @@
             border: 1px solid var(--color-border);
             background: var(--color-surface);
         }
+
         .showcase-visual {
             border-radius: var(--radius-lg);
             border: 1px solid var(--color-border);
@@ -120,15 +133,64 @@
             justify-content: center;
             gap: var(--space-2);
         }
-        .feature-list { list-style: none; display: flex; flex-direction: column; gap: 0.75rem; margin-top: var(--space-3); }
-        .feature-list li { display: flex; gap: 0.6rem; align-items: flex-start; font-size: var(--text-sm); color: var(--color-text-muted); }
-        .feature-list i { color: var(--color-accent); font-size: 1.05rem; flex-shrink: 0; margin-top: 2px; }
 
-        .alloc-bar { display: flex; height: 14px; border-radius: 99px; overflow: hidden; border: 1px solid var(--color-border); }
-        .alloc-bar i { display: block; height: 100%; transition: width 0.7s var(--ease-out); }
-        .alloc-legend { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 0.75rem; font-size: var(--text-xs); color: var(--color-text-muted); }
-        .alloc-legend span { display: inline-flex; align-items: center; gap: 0.35rem; }
-        .alloc-legend b { width: 9px; height: 9px; border-radius: 3px; }
+        .feature-list {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+            margin-top: var(--space-3);
+        }
+
+        .feature-list li {
+            display: flex;
+            gap: 0.6rem;
+            align-items: flex-start;
+            font-size: var(--text-sm);
+            color: var(--color-text-muted);
+        }
+
+        .feature-list i {
+            color: var(--color-accent);
+            font-size: 1.05rem;
+            flex-shrink: 0;
+            margin-top: 2px;
+        }
+
+        .alloc-bar {
+            display: flex;
+            height: 14px;
+            border-radius: 99px;
+            overflow: hidden;
+            border: 1px solid var(--color-border);
+        }
+
+        .alloc-bar i {
+            display: block;
+            height: 100%;
+            transition: width 0.7s var(--ease-out);
+        }
+
+        .alloc-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            margin-top: 0.75rem;
+            font-size: var(--text-xs);
+            color: var(--color-text-muted);
+        }
+
+        .alloc-legend span {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .alloc-legend b {
+            width: 9px;
+            height: 9px;
+            border-radius: 3px;
+        }
 
         .depth-row {
             position: relative;
@@ -142,25 +204,50 @@
             margin-bottom: 3px;
             overflow: hidden;
         }
-        .depth-row span { position: relative; z-index: 1; }
+
+        .depth-row span {
+            position: relative;
+            z-index: 1;
+        }
+
         /* Depth bar grows from the mid-price edge outward. */
         .depth-row .depth {
             position: absolute;
-            top: 0; bottom: 0; right: 0;
+            top: 0;
+            bottom: 0;
+            right: 0;
             opacity: 0.16;
             transition: width 0.45s var(--ease-out);
         }
-        .depth-row.ask .depth { background: var(--color-danger); }
-        .depth-row.bid .depth { background: var(--color-accent); }
+
+        .depth-row.ask .depth {
+            background: var(--color-danger);
+        }
+
+        .depth-row.bid .depth {
+            background: var(--color-accent);
+        }
+
         .depth-mid {
             background: var(--color-primary-soft);
             border: 1px solid var(--color-border);
         }
+
         /* Quantity repaint flash when a level changes. */
-        .depth-row .q.flash { animation: qFlash 0.6s ease-out; }
+        .depth-row .q.flash {
+            animation: qFlash 0.6s ease-out;
+        }
+
         @keyframes qFlash {
-            0% { color: var(--color-primary); transform: translateX(-3px); }
-            100% { color: inherit; transform: none; }
+            0% {
+                color: var(--color-primary);
+                transform: translateX(-3px);
+            }
+
+            100% {
+                color: inherit;
+                transform: none;
+            }
         }
 
         /* ---- Live showcase chrome ---- */
@@ -170,8 +257,15 @@
             align-items: center;
             gap: var(--space-2);
         }
-        .sv-sym { font-family: var(--font-mono); font-size: var(--text-sm); }
-        .live-badge { font-size: 0.7rem; }
+
+        .sv-sym {
+            font-family: var(--font-mono);
+            font-size: var(--text-sm);
+        }
+
+        .live-badge {
+            font-size: 0.7rem;
+        }
 
         .sv-quote {
             display: flex;
@@ -180,14 +274,21 @@
             margin-top: 0.35rem;
             flex-wrap: wrap;
         }
+
         .sv-px {
             font-size: var(--text-2xl);
             font-weight: 600;
             letter-spacing: -0.02em;
             transition: color 0.45s ease;
         }
-        .sv-px.up { color: var(--color-accent); }
-        .sv-px.down { color: var(--color-danger); }
+
+        .sv-px.up {
+            color: var(--color-accent);
+        }
+
+        .sv-px.down {
+            color: var(--color-danger);
+        }
 
         .sv-foot {
             display: flex;
@@ -204,6 +305,7 @@
             gap: 0.3rem;
             margin-top: var(--space-2);
         }
+
         .sv-hold {
             display: grid;
             grid-template-columns: 4.5rem 1fr auto;
@@ -214,9 +316,23 @@
             font-size: var(--text-xs);
             transition: background 0.25s;
         }
-        .sv-hold:hover { background: var(--color-surface); }
-        .sv-hold .h-sym { font-family: var(--font-mono); font-weight: 600; }
-        .sv-hold .h-bar { height: 5px; border-radius: 99px; background: var(--color-surface); overflow: hidden; }
+
+        .sv-hold:hover {
+            background: var(--color-surface);
+        }
+
+        .sv-hold .h-sym {
+            font-family: var(--font-mono);
+            font-weight: 600;
+        }
+
+        .sv-hold .h-bar {
+            height: 5px;
+            border-radius: 99px;
+            background: var(--color-surface);
+            overflow: hidden;
+        }
+
         .sv-hold .h-bar i {
             display: block;
             height: 100%;
@@ -224,13 +340,22 @@
             background: var(--gradient-brand);
             transition: width 0.6s var(--ease-out);
         }
-        .sv-hold .h-chg { font-family: var(--font-mono); font-weight: 500; }
+
+        .sv-hold .h-chg {
+            font-family: var(--font-mono);
+            font-weight: 500;
+        }
 
         @media (max-width: 900px) {
-            .calc-shell, .showcase { grid-template-columns: 1fr; }
+
+            .calc-shell,
+            .showcase {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
+
 <body>
 
     <div class="drawer-overlay"></div>
@@ -308,15 +433,18 @@
 
                         <div class="hero-trust animate-fade-up delay-400">
                             <div class="hero-trust-item">
-                                <span class="value num"><span class="counter" data-target="128" data-decimals="0"></span>K+</span>
+                                <span class="value num"><span class="counter" data-target="128"
+                                        data-decimals="0"></span>K+</span>
                                 <span class="label">Funded accounts</span>
                             </div>
                             <div class="hero-trust-item">
-                                <span class="value num">$<span class="counter" data-target="4.2" data-decimals="1"></span>B</span>
+                                <span class="value num">$<span class="counter" data-target="4.2"
+                                        data-decimals="1"></span>B</span>
                                 <span class="label">Monthly volume</span>
                             </div>
                             <div class="hero-trust-item">
-                                <span class="value num"><span class="counter" data-target="18" data-decimals="0"></span>ms</span>
+                                <span class="value num"><span class="counter" data-target="18"
+                                        data-decimals="0"></span>ms</span>
                                 <span class="label">Median fill</span>
                             </div>
                         </div>
@@ -334,11 +462,13 @@
                             <div class="terminal-quote">
                                 <div>
                                     <div class="sym">NIFTY 50</div>
-                                    <div style="font-size:var(--text-xs);color:var(--color-text-faint)">NSE · Index</div>
+                                    <div style="font-size:var(--text-xs);color:var(--color-text-faint)">NSE · Index
+                                    </div>
                                 </div>
                                 <div style="text-align:right">
                                     <div class="px" id="heroPx">22,418.75</div>
-                                    <div class="text-success num" id="heroChg" style="font-size:var(--text-sm)">+0.84%</div>
+                                    <div class="text-success num" id="heroChg" style="font-size:var(--text-sm)">+0.84%
+                                    </div>
                                 </div>
                             </div>
 
@@ -346,21 +476,25 @@
                                 <svg id="heroSpark" viewBox="0 0 300 130" preserveAspectRatio="none" aria-hidden="true">
                                     <defs>
                                         <linearGradient id="sparkFill" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.38"></stop>
-                                            <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0"></stop>
+                                            <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.38">
+                                            </stop>
+                                            <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0">
+                                            </stop>
                                         </linearGradient>
                                     </defs>
-                                    <g id="heroGrid" stroke="var(--color-border)" stroke-width="1" stroke-dasharray="3 5">
+                                    <g id="heroGrid" stroke="var(--color-border)" stroke-width="1"
+                                        stroke-dasharray="3 5">
                                         <line x1="0" y1="26" x2="300" y2="26"></line>
                                         <line x1="0" y1="52" x2="300" y2="52"></line>
                                         <line x1="0" y1="78" x2="300" y2="78"></line>
                                         <line x1="0" y1="104" x2="300" y2="104"></line>
                                     </g>
                                     <path id="heroSparkFill" fill="url(#sparkFill)"></path>
-                                    <path id="heroSparkLine" fill="none" stroke="var(--color-primary)" stroke-width="2.5"
-                                          stroke-linejoin="round" stroke-linecap="round"
-                                          vector-effect="non-scaling-stroke"></path>
-                                    <circle id="heroSparkHalo" r="7" fill="var(--color-primary)" opacity="0.18"></circle>
+                                    <path id="heroSparkLine" fill="none" stroke="var(--color-primary)"
+                                        stroke-width="2.5" stroke-linejoin="round" stroke-linecap="round"
+                                        vector-effect="non-scaling-stroke"></path>
+                                    <circle id="heroSparkHalo" r="7" fill="var(--color-primary)" opacity="0.18">
+                                    </circle>
                                     <circle id="heroSparkDot" r="3" fill="var(--color-primary)"></circle>
                                 </svg>
                             </div>
@@ -384,18 +518,21 @@
             <div class="section-header reveal">
                 <div class="eyebrow">The platform</div>
                 <h2>Everything you need to trade.</h2>
-                <p>From complex derivatives to simple equity investments — one account, one interface, zero compromise.</p>
+                <p>From complex derivatives to simple equity investments — one account, one interface, zero compromise.
+                </p>
             </div>
 
             <div class="bento">
                 <div class="card span-2 reveal" data-tilt>
                     <i class="ph ph-chart-polar card-icon"></i>
                     <h3>Advanced charting</h3>
-                    <p>100+ technical indicators, multi-timeframe analysis, and drawing tools built directly into the web platform — no downloads.</p>
+                    <p>100+ technical indicators, multi-timeframe analysis, and drawing tools built directly into the
+                        web platform — no downloads.</p>
                     <div class="mini-spark">
                         <svg viewBox="0 0 400 70" preserveAspectRatio="none" aria-hidden="true">
-                            <path class="spark-path" d="M0,55 L40,48 L80,52 L120,32 L160,38 L200,22 L240,28 L280,14 L320,20 L360,8 L400,12"
-                                  fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"></path>
+                            <path class="spark-path"
+                                d="M0,55 L40,48 L80,52 L120,32 L160,38 L200,22 L240,28 L280,14 L320,20 L360,8 L400,12"
+                                fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-linecap="round"></path>
                         </svg>
                     </div>
                 </div>
@@ -418,8 +555,10 @@
                 <div class="card span-2 reveal" data-reveal-delay="160" data-tilt>
                     <i class="ph ph-currency-circle-dollar card-icon"></i>
                     <h3>Transparent pricing</h3>
-                    <p>Flat per-order pricing with no payment for order flow, no platform fees, and no hidden spreads. What you see is what you pay.</p>
-                    <div style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:auto;padding-top:var(--space-3)">
+                    <p>Flat per-order pricing with no payment for order flow, no platform fees, and no hidden spreads.
+                        What you see is what you pay.</p>
+                    <div
+                        style="display:flex;gap:var(--space-2);flex-wrap:wrap;margin-top:auto;padding-top:var(--space-3)">
                         <span class="badge badge-primary"><i class="ph-bold ph-check"></i> No PFOF</span>
                         <span class="badge badge-primary"><i class="ph-bold ph-check"></i> No platform fee</span>
                         <span class="badge badge-primary"><i class="ph-bold ph-check"></i> Free withdrawals</span>
@@ -434,7 +573,8 @@
                 <div class="section-header reveal">
                     <div class="eyebrow">Take it for a spin</div>
                     <h2>Three surfaces. One workspace.</h2>
-                    <p>Click through the workspace to see how charting, order entry, and portfolio analytics fit together.</p>
+                    <p>Click through the workspace to see how charting, order entry, and portfolio analytics fit
+                        together.</p>
                 </div>
 
                 <div data-tabs class="reveal">
@@ -457,11 +597,14 @@
                         <div class="showcase">
                             <div>
                                 <h3>Read the tape, not the noise.</h3>
-                                <p>Layer indicators, compare instruments, and annotate levels that persist across devices.</p>
+                                <p>Layer indicators, compare instruments, and annotate levels that persist across
+                                    devices.</p>
                                 <ul class="feature-list">
-                                    <li><i class="ph-fill ph-check-circle"></i> 100+ studies including VWAP, Ichimoku, and volume profile</li>
+                                    <li><i class="ph-fill ph-check-circle"></i> 100+ studies including VWAP, Ichimoku,
+                                        and volume profile</li>
                                     <li><i class="ph-fill ph-check-circle"></i> Tick-level replay back to 2015</li>
-                                    <li><i class="ph-fill ph-check-circle"></i> Alerts that fire to mobile, email, or webhook</li>
+                                    <li><i class="ph-fill ph-check-circle"></i> Alerts that fire to mobile, email, or
+                                        webhook</li>
                                 </ul>
                             </div>
                             <div class="showcase-visual">
@@ -478,11 +621,13 @@
                                 </div>
 
                                 <svg id="svChart" viewBox="0 0 400 150" preserveAspectRatio="none"
-                                     style="width:100%;height:170px" aria-hidden="true">
+                                    style="width:100%;height:170px" aria-hidden="true">
                                     <defs>
                                         <linearGradient id="showFill" x1="0" y1="0" x2="0" y2="1">
-                                            <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.32"></stop>
-                                            <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0"></stop>
+                                            <stop offset="0%" stop-color="var(--color-primary)" stop-opacity="0.32">
+                                            </stop>
+                                            <stop offset="100%" stop-color="var(--color-primary)" stop-opacity="0">
+                                            </stop>
                                         </linearGradient>
                                     </defs>
                                     <g stroke="var(--color-border)" stroke-width="1" stroke-dasharray="3 5">
@@ -493,8 +638,8 @@
                                     </g>
                                     <path id="svFill" fill="url(#showFill)"></path>
                                     <path id="svLine" fill="none" stroke="var(--color-primary)" stroke-width="2.5"
-                                          stroke-linejoin="round" stroke-linecap="round"
-                                          vector-effect="non-scaling-stroke"></path>
+                                        stroke-linejoin="round" stroke-linecap="round"
+                                        vector-effect="non-scaling-stroke"></path>
                                     <circle id="svHalo" r="8" fill="var(--color-primary)" opacity="0.18"></circle>
                                     <circle id="svDot" r="3.5" fill="var(--color-primary)"></circle>
                                 </svg>
@@ -516,9 +661,11 @@
                                 <h3>Order entry that keeps up with you.</h3>
                                 <p>Bracket orders, trailing stops, and basket execution — all keyboard-driven.</p>
                                 <ul class="feature-list">
-                                    <li><i class="ph-fill ph-check-circle"></i> Market, limit, stop, and bracket in one ticket</li>
+                                    <li><i class="ph-fill ph-check-circle"></i> Market, limit, stop, and bracket in one
+                                        ticket</li>
                                     <li><i class="ph-fill ph-check-circle"></i> Pre-trade margin and impact preview</li>
-                                    <li><i class="ph-fill ph-check-circle"></i> Full keyboard shortcuts — never touch the mouse</li>
+                                    <li><i class="ph-fill ph-check-circle"></i> Full keyboard shortcuts — never touch
+                                        the mouse</li>
                                 </ul>
                             </div>
                             <div class="showcase-visual">
@@ -545,16 +692,21 @@
                         <div class="showcase">
                             <div>
                                 <h3>Know exactly what you own.</h3>
-                                <p>Live P&amp;L, exposure by sector, and realised-gain reporting ready for tax season.</p>
+                                <p>Live P&amp;L, exposure by sector, and realised-gain reporting ready for tax season.
+                                </p>
                                 <ul class="feature-list">
-                                    <li><i class="ph-fill ph-check-circle"></i> Real-time unrealised and realised P&amp;L</li>
-                                    <li><i class="ph-fill ph-check-circle"></i> Sector, asset-class, and currency exposure</li>
-                                    <li><i class="ph-fill ph-check-circle"></i> One-click statements and capital-gains export</li>
+                                    <li><i class="ph-fill ph-check-circle"></i> Real-time unrealised and realised
+                                        P&amp;L</li>
+                                    <li><i class="ph-fill ph-check-circle"></i> Sector, asset-class, and currency
+                                        exposure</li>
+                                    <li><i class="ph-fill ph-check-circle"></i> One-click statements and capital-gains
+                                        export</li>
                                 </ul>
                             </div>
                             <div class="showcase-visual">
                                 <div class="sv-head">
-                                    <span style="font-size:var(--text-sm);color:var(--color-text-muted)">Portfolio value</span>
+                                    <span style="font-size:var(--text-sm);color:var(--color-text-muted)">Portfolio
+                                        value</span>
                                     <span class="badge live-badge"><span class="pulse-dot"></span> Live</span>
                                 </div>
                                 <div class="sv-quote">
@@ -570,13 +722,15 @@
                                 <div class="alloc-legend" id="svLegend">
                                     <span><b style="background:#6366f1"></b> Equity <span class="num">42%</span></span>
                                     <span><b style="background:#a78bfa"></b> ETFs <span class="num">24%</span></span>
-                                    <span><b style="background:#22d3ee"></b> Derivatives <span class="num">18%</span></span>
+                                    <span><b style="background:#22d3ee"></b> Derivatives <span
+                                            class="num">18%</span></span>
                                     <span><b style="background:#10b981"></b> Cash <span class="num">16%</span></span>
                                 </div>
 
                                 <div class="sv-holdings" id="svHoldings"></div>
 
-                                <div class="sv-foot" style="border-top:1px solid var(--color-border);padding-top:0.5rem">
+                                <div class="sv-foot"
+                                    style="border-top:1px solid var(--color-border);padding-top:0.5rem">
                                     <span class="text-muted">Today's P&amp;L</span>
                                     <span class="num" id="svPnl">+$1,284.30 (+0.70%)</span>
                                 </div>
@@ -599,20 +753,24 @@
                 <div>
                     <div class="form-group" style="margin-bottom:var(--space-4)">
                         <label class="form-label" for="calcTrades">
-                            Trades per month — <span class="num" id="calcTradesOut" style="color:var(--color-primary)">40</span>
+                            Trades per month — <span class="num" id="calcTradesOut"
+                                style="color:var(--color-primary)">40</span>
                         </label>
                         <input type="range" class="slider" id="calcTrades" min="5" max="400" step="5" value="40">
-                        <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--color-text-faint)">
+                        <div
+                            style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--color-text-faint)">
                             <span>5</span><span>400</span>
                         </div>
                     </div>
 
                     <div class="form-group" style="margin-bottom:var(--space-4)">
                         <label class="form-label" for="calcSize">
-                            Average order size — <span class="num" id="calcSizeOut" style="color:var(--color-primary)">$5,000</span>
+                            Average order size — <span class="num" id="calcSizeOut"
+                                style="color:var(--color-primary)">$5,000</span>
                         </label>
                         <input type="range" class="slider" id="calcSize" min="500" max="100000" step="500" value="5000">
-                        <div style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--color-text-faint)">
+                        <div
+                            style="display:flex;justify-content:space-between;font-size:var(--text-xs);color:var(--color-text-faint)">
                             <span>$500</span><span>$100,000</span>
                         </div>
                     </div>
@@ -632,7 +790,8 @@
                 </div>
 
                 <div class="calc-readout">
-                    <div style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.12em;color:var(--color-text-faint)">
+                    <div
+                        style="font-size:var(--text-xs);text-transform:uppercase;letter-spacing:0.12em;color:var(--color-text-faint)">
                         Estimated monthly saving
                     </div>
                     <div class="big gradient-text" id="calcSave">$60.40</div>
@@ -696,24 +855,25 @@
 
         <!-- ============ STORY ============ -->
         <section class="container">
-            <div class="engineering-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);align-items:center">
+            <div class="engineering-grid"
+                style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);align-items:center">
                 <div class="reveal">
-                    <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=800"
-                         alt="Server infrastructure"
-                         style="border-radius:var(--radius-lg);border:1px solid var(--color-border);box-shadow:var(--shadow-lg)">
+                    <img src="assets/images/engineering-server-infrastructure.jpg" alt="Server infrastructure"
+                        style="border-radius:var(--radius-lg);border:1px solid var(--color-border);box-shadow:var(--shadow-lg)">
                 </div>
                 <div class="reveal engineering-copy" data-reveal-delay="100">
                     <div class="eyebrow">Our engineering</div>
                     <h2>Built for performance.<br>Engineered for reliability.</h2>
-                    <p class="mt-2">We rebuilt the brokerage backend from the ground up to eliminate middlemen, reduce latency, and pass the savings on to you.</p>
-                    <p>Our mission is to democratise access to institutional-grade markets without compromising on stability.</p>
+                    <p class="mt-2">We rebuilt the brokerage backend from the ground up to eliminate middlemen, reduce
+                        latency, and pass the savings on to you.</p>
+                    <p>Our mission is to democratise access to institutional-grade markets without compromising on
+                        stability.</p>
                     <a href="about.html" class="btn btn-outline" style="margin-top:var(--space-2)">
                         Read our story <i class="ph-bold ph-arrow-right"></i>
                     </a>
                 </div>
             </div>
         </section>
-
         <!-- ============ TESTIMONIALS ============ -->
         <section style="background: var(--color-bg-alt); border-block: 1px solid var(--color-border);">
             <div class="container">
@@ -724,32 +884,44 @@
 
                 <div class="quote-deck reveal" id="quoteDeck">
                     <div class="quote-slide active">
-                        <blockquote>"The fill quality is the story. I moved a six-figure book over and the slippage difference paid for the year in a fortnight."</blockquote>
+                        <blockquote>"The fill quality is the story. I moved a six-figure book over and the slippage
+                            difference paid for the year in a fortnight."</blockquote>
                         <div class="quote-meta">
-                            <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&crop=faces&q=80&w=140&h=140" alt="Portrait of R. Mehta" width="52" height="52" loading="lazy"></div>
+                            <div class="quote-avatar"><img
+                                    src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?auto=format&fit=crop&crop=faces&q=80&w=140&h=140"
+                                    alt="Portrait of R. Mehta" width="52" height="52" loading="lazy"></div>
                             <div style="text-align:left">
                                 <div style="font-weight:600">R. Mehta</div>
-                                <div style="font-size:var(--text-xs);color:var(--color-text-faint)">Independent derivatives trader</div>
+                                <div style="font-size:var(--text-xs);color:var(--color-text-faint)">Independent
+                                    derivatives trader</div>
                             </div>
                         </div>
                     </div>
                     <div class="quote-slide">
-                        <blockquote>"Charting that doesn't fight me, and an order ticket I can drive entirely from the keyboard. That's the whole pitch, and it delivers."</blockquote>
+                        <blockquote>"Charting that doesn't fight me, and an order ticket I can drive entirely from the
+                            keyboard. That's the whole pitch, and it delivers."</blockquote>
                         <div class="quote-meta">
-                            <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&q=80&w=140&h=140" alt="Portrait of A. Kaur" width="52" height="52" loading="lazy"></div>
+                            <div class="quote-avatar"><img
+                                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&crop=faces&q=80&w=140&h=140"
+                                    alt="Portrait of A. Kaur" width="52" height="52" loading="lazy"></div>
                             <div style="text-align:left">
                                 <div style="font-weight:600">A. Kaur</div>
-                                <div style="font-size:var(--text-xs);color:var(--color-text-faint)">Swing trader, 9 years</div>
+                                <div style="font-size:var(--text-xs);color:var(--color-text-faint)">Swing trader, 9
+                                    years</div>
                             </div>
                         </div>
                     </div>
                     <div class="quote-slide">
-                        <blockquote>"Flat pricing removed the mental tax of sizing around commissions. I trade my plan now instead of trading the fee schedule."</blockquote>
+                        <blockquote>"Flat pricing removed the mental tax of sizing around commissions. I trade my plan
+                            now instead of trading the fee schedule."</blockquote>
                         <div class="quote-meta">
-                            <div class="quote-avatar"><img src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&q=80&w=140&h=140" alt="Portrait of D. Silva" width="52" height="52" loading="lazy"></div>
+                            <div class="quote-avatar"><img
+                                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&crop=faces&q=80&w=140&h=140"
+                                    alt="Portrait of D. Silva" width="52" height="52" loading="lazy"></div>
                             <div style="text-align:left">
                                 <div style="font-weight:600">D. Silva</div>
-                                <div style="font-size:var(--text-xs);color:var(--color-text-faint)">Long-term equity investor</div>
+                                <div style="font-size:var(--text-xs);color:var(--color-text-faint)">Long-term equity
+                                    investor</div>
                             </div>
                         </div>
                     </div>
@@ -777,7 +949,8 @@
                         <i class="ph-bold ph-plus"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>Most applications are completed in under eight minutes. Identity verification is automated, and funded accounts are typically ready to trade the next business day.</p>
+                        <p>Most applications are completed in under eight minutes. Identity verification is automated,
+                            and funded accounts are typically ready to trade the next business day.</p>
                     </div>
                 </div>
 
@@ -787,7 +960,9 @@
                         <i class="ph-bold ph-plus"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>A flat fee per executed order, with no platform fee, no inactivity fee, and no charge for withdrawals. Regulatory and exchange pass-through charges are shown separately on every contract note.</p>
+                        <p>A flat fee per executed order, with no platform fee, no inactivity fee, and no charge for
+                            withdrawals. Regulatory and exchange pass-through charges are shown separately on every
+                            contract note.</p>
                     </div>
                 </div>
 
@@ -797,7 +972,8 @@
                         <i class="ph-bold ph-plus"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>Client securities are held in segregated custody, separate from company funds. Accounts carry placeholder SIPC-style coverage of up to $500,000 in this demonstration.</p>
+                        <p>Client securities are held in segregated custody, separate from company funds. Accounts carry
+                            placeholder SIPC-style coverage of up to $500,000 in this demonstration.</p>
                     </div>
                 </div>
 
@@ -807,7 +983,8 @@
                         <i class="ph-bold ph-plus"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>Yes. The web platform is fully responsive, and watchlists, alerts, and chart annotations sync across every device you sign in from.</p>
+                        <p>Yes. The web platform is fully responsive, and watchlists, alerts, and chart annotations sync
+                            across every device you sign in from.</p>
                     </div>
                 </div>
 
@@ -817,7 +994,8 @@
                         <i class="ph-bold ph-plus"></i>
                     </button>
                     <div class="accordion-body">
-                        <p>No. Orders are routed to the venue offering the best available execution, and routing statistics are published monthly.</p>
+                        <p>No. Orders are routed to the venue offering the best available execution, and routing
+                            statistics are published monthly.</p>
                     </div>
                 </div>
             </div>
@@ -886,7 +1064,10 @@
             <div class="footer-bottom">
                 <p>&copy; 2026 NovaTrade. All rights reserved.</p>
                 <p class="footer-disclosure">
-                    <strong>Disclaimer:</strong> NovaTrade is a placeholder brokerage brand created for demonstration purposes. Not a real financial institution. Trading involves significant risk, and you can lose all of your investment. Past performance does not guarantee future results. All figures, returns, and prices shown are estimates/placeholders and do not constitute investment advice.
+                    <strong>Disclaimer:</strong> NovaTrade is a placeholder brokerage brand created for demonstration
+                    purposes. Not a real financial institution. Trading involves significant risk, and you can lose all
+                    of your investment. Past performance does not guarantee future results. All figures, returns, and
+                    prices shown are estimates/placeholders and do not constitute investment advice.
                 </p>
             </div>
         </div>
@@ -895,4 +1076,5 @@
     <script src="./assets/js/main.js"></script>
     <script src="./assets/js/home.js"></script>
 </body>
+
 </html>
