@@ -2,6 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NovaTrade | Modern Stock Brokerage &amp; Trading Platform</title>
     <meta name="description" content="Trade equities, derivatives, and mutual funds with NovaTrade. The premium, secure, and intuitive brokerage platform for modern investors.">
@@ -695,13 +696,13 @@
 
         <!-- ============ STORY ============ -->
         <section class="container">
-            <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);align-items:center">
+            <div class="engineering-grid" style="display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:var(--space-6);align-items:center">
                 <div class="reveal">
                     <img src="https://images.unsplash.com/photo-1590283603385-17ffb3a7f29f?auto=format&fit=crop&q=80&w=800"
                          alt="Server infrastructure"
                          style="border-radius:var(--radius-lg);border:1px solid var(--color-border);box-shadow:var(--shadow-lg)">
                 </div>
-                <div class="reveal" data-reveal-delay="100">
+                <div class="reveal engineering-copy" data-reveal-delay="100">
                     <div class="eyebrow">Our engineering</div>
                     <h2>Built for performance.<br>Engineered for reliability.</h2>
                     <p class="mt-2">We rebuilt the brokerage backend from the ground up to eliminate middlemen, reduce latency, and pass the savings on to you.</p>
@@ -830,7 +831,7 @@
                 <p style="margin-bottom:var(--space-4);max-width:520px;margin-inline:auto">
                     Open an account in minutes and explore the full platform with a funded or paper account.
                 </p>
-                <div style="display:flex;gap:var(--space-2);justify-content:center;flex-wrap:wrap">
+                <div class="cta-buttons" style="display:flex;gap:var(--space-2);justify-content:center;flex-wrap:wrap">
                     <a href="register.html" class="btn btn-primary btn-lg" data-magnetic>
                         Create account <i class="ph-bold ph-arrow-right"></i>
                     </a>
@@ -848,6 +849,13 @@
                         <i class="ph-fill ph-chart-line-up"></i> NovaTrade
                     </a>
                     <p>The premium stock brokerage built for modern investors.</p>
+                    <div class="social-links" aria-label="Follow us">
+                        <a href="#" aria-label="X (Twitter)"><i class="ph ph-x-logo"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Platform</h4>

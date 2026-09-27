@@ -2,6 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pricing | NovaTrade</title>
     <meta name="description" content="View NovaTrade's transparent, institutional-grade pricing plans for retail and API traders.">
@@ -19,7 +20,7 @@
 
         .pricing-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            grid-template-columns: repeat(3, 1fr);
             gap: var(--space-6);
         }
 
@@ -33,6 +34,7 @@
             display: flex;
             flex-direction: column;
             position: relative;
+            text-align: center;
         }
         
         .pricing-card:hover {
@@ -76,7 +78,11 @@
 
         .pricing-features {
             list-style: none;
-            margin: var(--space-4) 0 auto;
+            /* Shrink-wrapped and centred so the ticks line up in a neat column */
+            width: fit-content;
+            margin: var(--space-4) auto auto;
+            padding: 0;
+            text-align: left;
         }
 
         .pricing-features li {
@@ -92,6 +98,22 @@
 
         @media (max-width: 1024px) {
             .btn-desktop-login { display: none !important; }
+            .pricing-grid { gap: var(--space-3); }
+            .pricing-card { padding: var(--space-4); }
+        }
+
+        @media (max-width: 768px) {
+            .pricing-grid { grid-template-columns: repeat(2, 1fr); gap: var(--space-6) var(--space-3); }
+            .pricing-grid .pricing-card:last-child {
+                grid-column: 1 / -1;
+                justify-self: center;
+                width: calc(50% - var(--space-3) / 2);
+            }
+        }
+
+        @media (max-width: 640px) {
+            .pricing-grid { grid-template-columns: 1fr; }
+            .pricing-grid .pricing-card:last-child { width: 100%; }
         }
     </style>
 </head>
@@ -188,7 +210,7 @@
                 </div>
             </div>
             
-            <p style="text-align: center; font-size: var(--text-sm); color: var(--color-text-muted);">
+            <p style="text-align: center; font-size: var(--text-sm); color: var(--color-text-muted); margin-top: var(--space-6);">
                 * Pricing shown is for placeholder purposes only. Other fees such as regulatory fees, wire transfer fees, and margin interest may apply.
             </p>
         </section>
@@ -202,6 +224,13 @@
                         <i class="ph-fill ph-chart-line-up" style="color: var(--color-primary)"></i> NovaTrade
                     </a>
                     <p>The premium stock brokerage built for modern investors.</p>
+                    <div class="social-links" aria-label="Follow us">
+                        <a href="#" aria-label="X (Twitter)"><i class="ph ph-x-logo"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Platform</h4>

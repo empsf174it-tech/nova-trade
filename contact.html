@@ -2,6 +2,7 @@
 <html lang="en" data-theme="dark">
 <head>
     <meta charset="UTF-8">
+    <script>try{var t=localStorage.getItem("theme");if(t)document.documentElement.setAttribute("data-theme",t);}catch(e){}</script>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Contact Us | NovaTrade</title>
     <meta name="description" content="Get in touch with NovaTrade's support team or visit our branch locations.">
@@ -78,7 +79,7 @@
             gap: var(--space-3);
             margin-bottom: var(--space-4);
         }
-        .contact-method i {
+        .contact-method > i {
             flex-shrink: 0;
             width: 44px;
             height: 44px;
@@ -191,6 +192,20 @@
                     </div>
                 </div>
 
+                <div class="contact-method">
+                    <i class="ph ph-share-network"></i>
+                    <div>
+                        <h4>Follow Us</h4>
+                        <div class="social-links">
+                            <a href="#" aria-label="X (Twitter)"><i class="ph ph-x-logo"></i></a>
+                            <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                            <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                            <a href="#" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
+                            <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                        </div>
+                    </div>
+                </div>
+
                 <!-- Google Maps Iframe Placeholder -->
                 <div class="map-container">
                     <div style="text-align: center;">
@@ -211,6 +226,13 @@
                         <i class="ph-fill ph-chart-line-up" style="color: var(--color-primary)"></i> NovaTrade
                     </a>
                     <p>The premium stock brokerage built for modern investors.</p>
+                    <div class="social-links" aria-label="Follow us">
+                        <a href="#" aria-label="X (Twitter)"><i class="ph ph-x-logo"></i></a>
+                        <a href="#" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                        <a href="#" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                        <a href="#" aria-label="YouTube"><i class="ph ph-youtube-logo"></i></a>
+                        <a href="#" aria-label="Facebook"><i class="ph ph-facebook-logo"></i></a>
+                    </div>
                 </div>
                 <div class="footer-col">
                     <h4>Platform</h4>
