@@ -6,6 +6,7 @@
 
 document.addEventListener('DOMContentLoaded', () => {
     initHeroTerminal();
+    initChartCard();
     initTicker();
     initShowcase();
     initCalculator();
@@ -13,6 +14,85 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 const REDUCED = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+/* ------------------------------------------------------------------
+   "Advanced charting" card: chart that scrolls left as new points arrive
+   ------------------------------------------------------------------ */
+function initChartCard() {
+    const svg = document.getElementById('chartCard');
+    const line = document.getElementById('chartCardLine');
+    const area = document.getElementById('chartCardArea');
+    const volG = document.getElementById('chartCardVol');
+    if (!svg || !line || REDUCED) return;
+
+    const W = 400, H = 110, TOP = 10, BOTTOM = 76;
+    const COUNT = 22;                 // one extra point scrolls off the left edge
+    const DX = W / (COUNT - 2);
+    const STEP_MS = 1100;             // time for the chart to advance one point
+
+    // Seed a gently rising random walk.
+    const series = [];
+    let v = 50;
+    for (let i = 0; i < COUNT; i++) { v += (Math.random() - 0.4) * 6; series.push(v); }
+    const vols = series.map(() => 0.3 + Math.random() * 0.7);
+
+    // Rebuild the volume bars: one per point, sized each frame.
+    volG.innerHTML = '';
+    const bars = series.map(() => {
+        const r = document.createElementNS('http://www.w3.org/2000/svg', 'rect');
+        r.setAttribute('width', '9');
+        volG.appendChild(r);
+        return r;
+    });
+
+    function nextValue() {
+        const last = series[series.length - 1];
+        // Pull back toward the middle so the line never drifts off-chart.
+        return last + (Math.random() - 0.45) * 7 + (50 - last) * 0.04;
+    }
+
+    let visible = true;
+    if ('IntersectionObserver' in window) {
+        new IntersectionObserver(([e]) => { visible = e.isIntersecting; }).observe(svg);
+    }
+
+    let lo = Math.min(...series) - 4;
+    let hi = Math.max(...series) + 4;
+    let stepStart = performance.now();
+    function frame(now) {
+        if (visible) {
+            let t = (now - stepStart) / STEP_MS;
+            if (t >= 1) {
+                series.shift(); series.push(nextValue());
+                vols.shift(); vols.push(0.3 + Math.random() * 0.7);
+                stepStart = now;
+                t = 0;
+            }
+
+            // Ease the y-range so the scale doesn't jump when an extreme point leaves.
+            lo += (Math.min(...series) - 4 - lo) * 0.05;
+            hi += (Math.max(...series) + 4 - hi) * 0.05;
+            const min = lo, max = hi;
+            const yAt = (val) => BOTTOM - ((val - min) / (max - min)) * (BOTTOM - TOP);
+            const xAt = (i) => (i - t) * DX;
+
+            const d = 'M' + series.map((val, i) => `${xAt(i).toFixed(1)},${yAt(val).toFixed(1)}`).join(' L');
+            line.setAttribute('d', d);
+            area.setAttribute('d', `${d} L${xAt(COUNT - 1).toFixed(1)},${H} L${xAt(0).toFixed(1)},${H} Z`);
+
+            bars.forEach((r, i) => {
+                const h = vols[i] * 28;
+                r.setAttribute('x', (xAt(i) - 4.5).toFixed(1));
+                r.setAttribute('y', (H - h).toFixed(1));
+                r.setAttribute('height', h.toFixed(1));
+            });
+        } else {
+            stepStart = now; // don't jump ahead after being off-screen
+        }
+        requestAnimationFrame(frame);
+    }
+    requestAnimationFrame(frame);
+}
 
 /* ------------------------------------------------------------------
    Hero terminal: ticking index price, live sparkline, watchlist rows

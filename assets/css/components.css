@@ -66,7 +66,46 @@
     -webkit-mask-image: radial-gradient(70% 60% at 50% 30%, #000 30%, transparent 100%);
 }
 
+/* Unsplash photo backdrop, faded into the page background */
+.hero-photo {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    background:
+        linear-gradient(180deg, color-mix(in srgb, var(--color-bg) 55%, transparent) 0%, var(--color-bg) 100%),
+        linear-gradient(90deg, var(--color-bg) 0%, color-mix(in srgb, var(--color-bg) 40%, transparent) 60%, color-mix(in srgb, var(--color-bg) 70%, transparent) 100%),
+        url("https://images.unsplash.com/photo-1611974789855-9c2a0a7236a3?auto=format&fit=crop&w=1920&q=75") center / cover no-repeat;
+    opacity: 0.9;
+}
+[data-theme="light"] .hero-photo { opacity: 0.45; }
+
 .hero .container { position: relative; z-index: 1; }
+
+/* Back to top */
+.back-to-top {
+    position: fixed;
+    right: var(--space-3);
+    bottom: var(--space-3);
+    z-index: 900;
+    width: 46px;
+    height: 46px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid var(--color-border);
+    background: var(--color-primary);
+    color: #fff;
+    font-size: 1.25rem;
+    cursor: pointer;
+    box-shadow: var(--shadow-lg);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(12px);
+    transition: opacity .25s ease, transform .25s ease, visibility .25s;
+}
+.back-to-top.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.back-to-top:hover { transform: translateY(-3px); }
 
 .hero-layout {
     display: grid;
@@ -308,7 +347,7 @@
 }
 .bento .card.span-2 { grid-column: span 2; }
 
-.mini-spark { width: 100%; height: 70px; margin-top: auto; padding-top: var(--space-3); }
+.mini-spark { width: 100%; height: 120px; margin-top: auto; padding-top: var(--space-3); }
 .mini-spark svg { width: 100%; height: 100%; overflow: visible; }
 
 /* ============================================================

@@ -15,7 +15,25 @@ document.addEventListener('DOMContentLoaded', () => {
     initAccordions();
     initMagnetic();
     initPasswordToggles();
+    initBackToTop();
 });
+
+function initBackToTop() {
+    const btn = document.createElement('button');
+    btn.className = 'back-to-top';
+    btn.setAttribute('aria-label', 'Back to top');
+    btn.innerHTML = '<i class="ph-bold ph-arrow-up"></i>';
+    document.body.appendChild(btn);
+
+    const toggle = () => btn.classList.toggle('show', window.scrollY > 400);
+    window.addEventListener('scroll', toggle, { passive: true });
+    toggle();
+
+    btn.addEventListener('click', () => {
+        const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        window.scrollTo({ top: 0, behavior: reduced ? 'auto' : 'smooth' });
+    });
+}
 
 function initPasswordToggles() {
     document.querySelectorAll('.password-toggle').forEach(btn => {

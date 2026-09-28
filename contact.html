@@ -53,11 +53,15 @@
     <style>
         @media (max-width: 1024px) { .btn-desktop-login { display: none !important; } }
         
+        .contact-hero {
+            padding: calc(72px + var(--space-12)) 0 var(--space-8);
+            text-align: center;
+        }
+
         .contact-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: var(--space-8);
-            margin-top: calc(72px + var(--space-8));
             padding-bottom: var(--space-8);
             /* Prevent overflow on small screens */
             width: 100%;
@@ -123,11 +127,16 @@
     </style>
 
     <main class="container">
+        <section class="contact-hero">
+            <h1 style="margin-bottom: var(--space-2);">Talk to us. We're always listening.</h1>
+            <p style="font-size: var(--text-lg); max-width: 600px; margin: 0 auto;">Reach our support team for account, technical, or trade inquiries — or visit one of our branches.</p>
+        </section>
+
         <div class="contact-grid">
             
             <!-- Contact Form -->
             <div>
-                <h1 style="margin-bottom: var(--space-2);">Get in touch</h1>
+                <h2 style="margin-bottom: var(--space-2);">Get in touch</h2>
                 <p style="margin-bottom: var(--space-6);">Our support team is available 24/5 to assist with your account, technical issues, or trade inquiries.</p>
                 
                 <!-- Formspree placeholder action -->
